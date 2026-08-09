@@ -32,18 +32,26 @@
 
 <body>
 
-    <!-- ==========================================
-         ENTRADA
-    =========================================== -->
+    <!-- =====================================================
+         PORTADA / SOBRE
+    ====================================================== -->
 
-    <section class="opening" id="opening">
+    <section
+        class="opening"
+        id="opening"
+    >
 
         <div class="star-field"></div>
+
         <div class="opening-glow"></div>
+
 
         <div class="opening-ny-title">
             NEW YORK
         </div>
+
+
+        <!-- SKYLINE -->
 
         <div class="opening-skyline">
 
@@ -62,23 +70,27 @@
         </div>
 
 
-        <!-- Globos izquierda -->
+        <!-- GLOBOS IZQUIERDA -->
 
         <div class="opening-balloon-group balloons-left">
 
             <span class="ny-balloon balloon-lg"></span>
+
             <span class="ny-balloon balloon-sm"></span>
+
             <span class="ny-balloon balloon-glitter"></span>
 
         </div>
 
 
-        <!-- Globos derecha -->
+        <!-- GLOBOS DERECHA -->
 
         <div class="opening-balloon-group balloons-right">
 
             <span class="ny-balloon balloon-sm"></span>
+
             <span class="ny-balloon balloon-lg"></span>
+
             <span class="ny-balloon balloon-glitter"></span>
 
         </div>
@@ -95,23 +107,33 @@
 
             <span class="envelope-shadow"></span>
 
+
             <span class="envelope-base">
 
                 <span class="envelope-line line-left"></span>
+
                 <span class="envelope-line line-right"></span>
 
             </span>
 
 
+            <!-- TARJETA INTERNA -->
+
             <span class="envelope-letter">
 
-                <span class="letter-stars">
+                <span class="letter-star star-one">
                     ✦
                 </span>
+
+                <span class="letter-star star-two">
+                    ✧
+                </span>
+
 
                 <span class="envelope-name">
                     Lia
                 </span>
+
 
                 <span class="envelope-subtitle">
                     Mis XV años
@@ -121,10 +143,14 @@
 
 
             <span class="envelope-front-left"></span>
+
             <span class="envelope-front-right"></span>
+
 
             <span class="envelope-flap"></span>
 
+
+            <!-- SELLO -->
 
             <span class="seal">
 
@@ -134,9 +160,9 @@
                         ✦
                     </span>
 
-                    <span>
+                    <strong>
                         Toca
-                    </span>
+                    </strong>
 
                     <small>
                         para abrir
@@ -165,9 +191,9 @@
 
 
 
-    <!-- ==========================================
+    <!-- =====================================================
          INVITACIÓN
-    =========================================== -->
+    ====================================================== -->
 
     <main
         class="invitation"
@@ -175,8 +201,14 @@
         hidden
     >
 
+        <!-- BORDES -->
+
         <div class="silver-edge silver-edge-left"></div>
+
         <div class="silver-edge silver-edge-right"></div>
+
+
+        <!-- DESTELLOS JS -->
 
         <div
             class="sparkles"
@@ -185,34 +217,41 @@
         ></div>
 
 
-        <!-- ==========================================
-             HERO
-        =========================================== -->
+
+        <!-- =================================================
+             PORTADA PRINCIPAL
+        ================================================== -->
 
         <section class="section hero">
 
             <div class="hero-stars"></div>
+
 
             <div class="hero-new-york">
                 NEW YORK
             </div>
 
 
+            <!-- SKYLINE -->
+
             <div class="hero-skyline">
 
                 <span class="tower t1"></span>
+
                 <span class="tower t2"></span>
 
-                <span class="tower hero-empire">
-                    <i></i>
-                </span>
+                <span class="tower hero-empire"></span>
 
                 <span class="tower t3"></span>
+
                 <span class="tower t4"></span>
+
                 <span class="tower t5"></span>
 
             </div>
 
+
+            <!-- GLOBOS -->
 
             <div class="hero-balloon-group hero-balloon-left">
 
@@ -225,6 +264,7 @@
 
             <div class="hero-balloon-group hero-balloon-right">
 
+                <span></span>
                 <span></span>
                 <span></span>
 
@@ -263,80 +303,57 @@
 
 
 
-            <!-- =====================================
+            <!-- =============================================
                  REPRODUCTOR
-            ====================================== -->
+            ============================================== -->
 
             <div class="music-player reveal">
 
-                <div class="player-header">
 
-                    <div class="disc">
+                <!-- BARRA -->
 
-                        <div class="disc-center"></div>
+                <div class="player-progress">
 
-                    </div>
-
-
-                    <div class="track-information">
-
-                        <strong>
-                            XV de Lia
-                        </strong>
-
-                        <span>
-                            Música de la noche
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="progress-area">
-
-                    <div class="progress-bar">
+                    <div class="player-progress-track">
 
                         <span
-                            class="progress-fill"
+                            class="player-progress-fill"
                             id="progressFill"
+                        ></span>
+
+                        <span
+                            class="player-progress-thumb"
+                            id="progressThumb"
                         ></span>
 
                     </div>
 
-
-                    <div class="player-times">
-
-                        <span id="currentTime">
-                            0:00
-                        </span>
-
-                        <span id="duration">
-                            0:00
-                        </span>
-
-                    </div>
-
                 </div>
 
 
+
+                <!-- CONTROLES -->
+
                 <div class="player-controls">
 
+
                     <button
-                        class="player-secondary"
+                        class="player-side-button"
                         type="button"
-                        aria-label="Aleatorio"
+                        tabindex="-1"
+                        aria-hidden="true"
                     >
                         ⤨
                     </button>
 
 
                     <button
-                        class="player-secondary"
+                        class="player-side-button previous-icon"
                         type="button"
-                        aria-label="Anterior"
+                        tabindex="-1"
+                        aria-hidden="true"
                     >
-                        ◀
+                        |◀
                     </button>
 
 
@@ -344,7 +361,7 @@
                         class="main-play-button"
                         id="musicButton"
                         type="button"
-                        aria-label="Reproducir música"
+                        aria-label="Reproducir o pausar música"
                     >
 
                         <span id="musicIcon">
@@ -355,18 +372,20 @@
 
 
                     <button
-                        class="player-secondary"
+                        class="player-side-button next-icon"
                         type="button"
-                        aria-label="Siguiente"
+                        tabindex="-1"
+                        aria-hidden="true"
                     >
-                        ▶
+                        ▶|
                     </button>
 
 
                     <button
-                        class="player-secondary"
+                        class="player-side-button"
                         type="button"
-                        aria-label="Repetir"
+                        tabindex="-1"
+                        aria-hidden="true"
                     >
                         ↻
                     </button>
@@ -374,15 +393,33 @@
                 </div>
 
 
-                <p class="music-hint">
-                    ↑ Toca para reproducir la música
+
+                <!-- TIEMPO -->
+
+                <div class="player-time">
+
+                    <span id="currentTime">
+                        0:00
+                    </span>
+
+                    <span id="duration">
+                        0:00
+                    </span>
+
+                </div>
+
+
+                <p
+                    class="music-message"
+                    id="musicMessage"
+                >
+                    La música acompaña esta noche ✦
                 </p>
 
 
                 <audio
                     id="backgroundMusic"
-                    preload="metadata"
-                    loop
+                    preload="auto"
                 >
 
                     <source
@@ -393,6 +430,7 @@
                 </audio>
 
             </div>
+
 
 
             <div class="scroll-indicator reveal">
@@ -409,9 +447,9 @@
 
 
 
-        <!-- ==========================================
-             MENSAJE
-        =========================================== -->
+        <!-- =================================================
+             FRASE
+        ================================================== -->
 
         <section class="section message-section reveal">
 
@@ -419,10 +457,12 @@
                 ✦
             </span>
 
+
             <p>
                 Quiero festejar mis XV bailando y gozando
                 con la gente que más quiero.
             </p>
+
 
             <strong>
                 ¿Vienes?
@@ -432,11 +472,12 @@
 
 
 
-        <!-- ==========================================
-             FECHA
-        =========================================== -->
+        <!-- =================================================
+             CALENDARIO
+        ================================================== -->
 
         <section class="section date-section">
+
 
             <div class="section-title reveal">
 
@@ -452,6 +493,7 @@
 
 
             <div class="calendar reveal">
+
 
                 <div class="calendar-week">
 
@@ -525,6 +567,8 @@
 
 
 
+            <!-- CONTADOR -->
+
             <div class="countdown-container reveal">
 
                 <p class="faltan">
@@ -533,6 +577,7 @@
 
 
                 <div class="countdown">
+
 
                     <div>
 
@@ -593,13 +638,15 @@
 
 
 
-        <!-- ==========================================
+        <!-- =================================================
              FIESTA
-        =========================================== -->
+        ================================================== -->
 
         <section class="section event-section reveal">
 
+
             <div class="mini-skyline"></div>
+
 
             <h2>
                 Fiesta
@@ -619,12 +666,18 @@
 
                 <div class="time-row">
 
-                    <div class="clock-icon">
+
+                    <div
+                        class="clock-icon"
+                        aria-hidden="true"
+                    >
 
                         <span class="clock-hand clock-hour"></span>
+
                         <span class="clock-hand clock-minute"></span>
 
                     </div>
+
 
                     <p>
                         6:30 PM
@@ -636,7 +689,7 @@
 
 
             <a
-                class="silver-button location-button"
+                class="silver-button"
                 href="https://waze.com/ul/h9fxehkc9s"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -656,21 +709,18 @@
 
 
 
-        <!-- ==========================================
+        <!-- =================================================
              REGALO
-        =========================================== -->
+        ================================================== -->
 
         <section class="section gift-section reveal">
 
-            <div class="image-icon-box">
 
-                <img
-                    src="assets/images/gift.jfif"
-                    alt="Regalo"
-                    class="section-image gift-image"
-                >
-
-            </div>
+            <img
+                src="assets/images/gift.jfif"
+                alt="Regalo"
+                class="section-image gift-image"
+            >
 
 
             <h2>
@@ -696,31 +746,29 @@
 
 
 
-        <!-- ==========================================
-             CÓDIGO VESTIMENTA
-        =========================================== -->
+        <!-- =================================================
+             VESTIMENTA
+        ================================================== -->
 
         <section class="section dress-section reveal">
+
 
             <h2>
                 Código de vestimenta
             </h2>
 
 
-            <div class="dress-image-container">
-
-                <img
-                    src="assets/images/dress-code.jfif"
-                    alt="Código de vestimenta formal"
-                    class="section-image dress-image"
-                >
-
-            </div>
+            <img
+                src="assets/images/dress-code.jfif"
+                alt="Código de vestimenta formal"
+                class="section-image dress-image"
+            >
 
 
             <p class="dress-code">
                 Formal
             </p>
+
 
             <p class="all-black">
                 ALL BLACK
@@ -730,11 +778,12 @@
 
 
 
-        <!-- ==========================================
+        <!-- =================================================
              CONFIRMACIÓN
-        =========================================== -->
+        ================================================== -->
 
         <section class="section rsvp-section reveal">
+
 
             <h2>
                 Confirmación de asistencia
@@ -742,8 +791,7 @@
 
 
             <p>
-                Confirma tu asistencia directamente
-                por WhatsApp.
+                Confirma tu asistencia directamente por WhatsApp.
             </p>
 
 
@@ -753,6 +801,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
             >
+
 
                 <span class="whatsapp-circle">
                     ☎
@@ -782,9 +831,9 @@
 
 
 
-        <!-- ==========================================
+        <!-- =================================================
              FINAL
-        =========================================== -->
+        ================================================== -->
 
         <footer class="section final-section reveal">
 
@@ -792,9 +841,11 @@
 
             <div class="final-skyline"></div>
 
+
             <p>
                 NYC is waiting for you!
             </p>
+
 
             <span>
                 12 · 09 · 2026
