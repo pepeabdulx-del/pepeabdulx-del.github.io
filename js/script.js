@@ -11,6 +11,7 @@ const openInvitation =
 const invitation =
     document.getElementById("invitation");
 
+
 const musicButton =
     document.getElementById("musicButton");
 
@@ -23,11 +24,16 @@ const musicMessage =
 const audio =
     document.getElementById("backgroundMusic");
 
+
+const progressTrack =
+    document.getElementById("progressTrack");
+
 const progressFill =
     document.getElementById("progressFill");
 
 const progressThumb =
     document.getElementById("progressThumb");
+
 
 const currentTime =
     document.getElementById("currentTime");
@@ -35,13 +41,26 @@ const currentTime =
 const duration =
     document.getElementById("duration");
 
+
 const toast =
     document.getElementById("toast");
 
 
 
 /* ==========================================================
-   FECHA DEL EVENTO
+   ICONOS
+========================================================== */
+
+const playIconSrc =
+    "assets/icons/icon-play.png";
+
+const pauseIconSrc =
+    "assets/icons/icon-pause.png";
+
+
+
+/* ==========================================================
+   EVENTO
 ========================================================== */
 
 const eventDate =
@@ -84,44 +103,53 @@ function openInvitationAnimation() {
 
 
     /*
-        Intentamos iniciar la música
-        inmediatamente después del toque.
+        El usuario acaba de tocar el sobre.
 
-        Esto ayuda especialmente en
-        iPhone y Android.
+        Aprovechamos este gesto para intentar
+        reproducir la música inmediatamente.
     */
 
     startMusicOnOpening();
 
 
-    setTimeout(() => {
+    setTimeout(
+        () => {
 
-        invitation.hidden = false;
-
-        window.scrollTo(
-            0,
-            0
-        );
-
-    }, 550);
+            invitation.hidden =
+                false;
 
 
-    setTimeout(() => {
+            window.scrollTo(
+                0,
+                0
+            );
 
-        opening.classList.add(
-            "is-gone"
-        );
+        },
+
+        550
+    );
 
 
-        document.body.style.overflow =
-            "";
+    setTimeout(
+        () => {
+
+            opening.classList.add(
+                "is-gone"
+            );
 
 
-        activateScrollAnimations();
+            document.body.style.overflow =
+                "";
 
-        createSparkles();
 
-    }, 1250);
+            activateScrollAnimations();
+
+            createSparkles();
+
+        },
+
+        1250
+    );
 
 }
 
@@ -158,7 +186,7 @@ async function startMusicOnOpening() {
 
 
         musicMessage.textContent =
-            "Toca ▶ para reproducir la música";
+            "Toca el botón de reproducción";
 
     }
 
@@ -174,14 +202,17 @@ function fadeMusicIn() {
 
     let volume = 0;
 
-    const targetVolume = 0.75;
+
+    const targetVolume =
+        0.75;
 
 
     const fade =
         setInterval(
             () => {
 
-                volume += 0.04;
+                volume +=
+                    0.04;
 
 
                 if (
@@ -280,7 +311,7 @@ async function toggleMusic() {
 
 
 /* ==========================================================
-   ESTADO DEL REPRODUCTOR
+   ESTADO VISUAL
 ========================================================== */
 
 function setPlayingState(
@@ -289,8 +320,12 @@ function setPlayingState(
 
     if (playing) {
 
-        musicIcon.textContent =
-            "Ⅱ";
+        musicIcon.src =
+            pauseIconSrc;
+
+
+        musicIcon.alt =
+            "Pausar";
 
 
         musicButton.classList.add(
@@ -299,14 +334,18 @@ function setPlayingState(
 
 
         musicMessage.textContent =
-            "La música acompaña esta noche ✦";
+            "La música acompaña esta noche";
 
     }
 
     else {
 
-        musicIcon.textContent =
-            "▶";
+        musicIcon.src =
+            playIconSrc;
+
+
+        musicIcon.alt =
+            "Reproducir";
 
 
         musicButton.classList.remove(
@@ -315,7 +354,7 @@ function setPlayingState(
 
 
         musicMessage.textContent =
-            "Toca ▶ para continuar la música";
+            "Toca para continuar la música";
 
     }
 
@@ -324,7 +363,7 @@ function setPlayingState(
 
 
 /* ==========================================================
-   METADATOS DEL AUDIO
+   METADATOS
 ========================================================== */
 
 audio.addEventListener(
@@ -345,7 +384,7 @@ function updateDuration() {
 
 
 /* ==========================================================
-   PROGRESO DEL AUDIO
+   PROGRESO
 ========================================================== */
 
 audio.addEventListener(
@@ -369,7 +408,9 @@ function updateProgress() {
         (
             audio.currentTime /
             audio.duration
-        ) * 100;
+        )
+        *
+        100;
 
 
     progressFill.style.width =
@@ -396,7 +437,54 @@ function updateProgress() {
 
 
 /* ==========================================================
-   AL TERMINAR LA CANCIÓN
+   CAMBIAR POSICIÓN DE LA CANCIÓN
+========================================================== */
+
+progressTrack.addEventListener(
+    "click",
+    seekAudio
+);
+
+
+function seekAudio(event) {
+
+    if (
+        !audio.duration
+    ) {
+
+        return;
+
+    }
+
+
+    const rectangle =
+        progressTrack
+            .getBoundingClientRect();
+
+
+    const clickPosition =
+        event.clientX
+        -
+        rectangle.left;
+
+
+    const percentage =
+        clickPosition
+        /
+        rectangle.width;
+
+
+    audio.currentTime =
+        percentage
+        *
+        audio.duration;
+
+}
+
+
+
+/* ==========================================================
+   FIN DE CANCIÓN
 ========================================================== */
 
 audio.addEventListener(
@@ -483,7 +571,9 @@ function updateCountdown() {
 
 
     const difference =
-        eventDate - now;
+        eventDate
+        -
+        now;
 
 
     if (
@@ -521,7 +611,8 @@ function updateCountdown() {
             (
                 totalSeconds %
                 86400
-            ) /
+            )
+            /
             3600
         );
 
@@ -531,13 +622,15 @@ function updateCountdown() {
             (
                 totalSeconds %
                 3600
-            ) /
+            )
+            /
             60
         );
 
 
     const seconds =
-        totalSeconds %
+        totalSeconds
+        %
         60;
 
 
@@ -689,7 +782,8 @@ function activateScrollAnimations() {
 
             {
 
-                threshold: .12,
+                threshold:
+                    0.12,
 
                 rootMargin:
                     "0px 0px -3% 0px"
@@ -726,8 +820,10 @@ function createSparkles() {
 
 
     if (
-        !container ||
-        container.children.length > 0
+        !container
+        ||
+        container.children.length >
+        0
     ) {
 
         return;
@@ -736,7 +832,8 @@ function createSparkles() {
 
 
     const amount =
-        window.innerWidth < 500
+        window.innerWidth <
+        500
             ? 60
             : 80;
 
@@ -759,14 +856,16 @@ function createSparkles() {
 
 
         sparkle.style.left =
-            Math.random() *
+            Math.random()
+            *
             100
             +
             "%";
 
 
         sparkle.style.top =
-            Math.random() *
+            Math.random()
+            *
             100
             +
             "%";
@@ -779,7 +878,9 @@ function createSparkles() {
             (
                 2
                 +
-                Math.random() * 4
+                Math.random()
+                *
+                4
             )
             +
             "s"
@@ -789,7 +890,9 @@ function createSparkles() {
 
         sparkle.style.animationDelay =
             (
-                -Math.random() * 6
+                -Math.random()
+                *
+                6
             )
             +
             "s";
@@ -806,7 +909,7 @@ function createSparkles() {
 
 
 /* ==========================================================
-   MENSAJE EMERGENTE
+   TOAST
 ========================================================== */
 
 function showToast(
