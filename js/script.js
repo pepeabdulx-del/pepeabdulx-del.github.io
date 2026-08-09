@@ -1,140 +1,582 @@
-const opening = document.getElementById('opening');
-const openInvitationButton = document.getElementById('openInvitation');
-const invitation = document.getElementById('invitation');
-const musicButton = document.getElementById('musicButton');
-const musicIcon = document.getElementById('musicIcon');
-const musicLabel = document.getElementById('musicLabel');
-const audio = document.getElementById('backgroundMusic');
-const toast = document.getElementById('toast');
+const opening =
+    document.getElementById("opening");
 
-const eventDate = new Date('2026-09-12T18:30:00-06:00');
+const openInvitation =
+    document.getElementById("openInvitation");
 
-function showToast(message) {
-  toast.textContent = message;
-  toast.classList.add('is-showing');
-  window.clearTimeout(showToast.timer);
-  showToast.timer = window.setTimeout(() => {
-    toast.classList.remove('is-showing');
-  }, 3200);
+const invitation =
+    document.getElementById("invitation");
+
+const musicButton =
+    document.getElementById("musicButton");
+
+const musicIcon =
+    document.getElementById("musicIcon");
+
+const audio =
+    document.getElementById("backgroundMusic");
+
+const progressFill =
+    document.getElementById("progressFill");
+
+const currentTime =
+    document.getElementById("currentTime");
+
+const duration =
+    document.getElementById("duration");
+
+const toast =
+    document.getElementById("toast");
+
+
+const eventDate =
+    new Date(
+        "2026-09-12T18:30:00-06:00"
+    );
+
+
+
+/* ============================================
+   ABRIR INVITACIÓN
+============================================ */
+
+openInvitation.addEventListener(
+    "click",
+    openInvitationAnimation
+);
+
+
+function openInvitationAnimation() {
+
+    if (
+        opening.classList.contains(
+            "is-opening"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    document.body.style.overflow =
+        "hidden";
+
+
+    opening.classList.add(
+        "is-opening"
+    );
+
+
+    setTimeout(() => {
+
+        invitation.hidden = false;
+
+        window.scrollTo(
+            0,
+            0
+        );
+
+    }, 600);
+
+
+    setTimeout(() => {
+
+        opening.classList.add(
+            "is-gone"
+        );
+
+        document.body.style.overflow =
+            "";
+
+        activateScrollAnimations();
+
+        createSparkles();
+
+    }, 1250);
+
 }
 
-function openInvitation() {
-  if (opening.classList.contains('is-opening')) return;
 
-  opening.classList.add('is-opening');
-  document.body.style.overflow = 'hidden';
 
-  window.setTimeout(() => {
-    invitation.hidden = false;
-    window.scrollTo(0, 0);
-  }, 620);
+/* ============================================
+   REPRODUCTOR
+============================================ */
 
-  window.setTimeout(() => {
-    opening.classList.add('is-gone');
-    document.body.style.overflow = '';
-    initRevealObserver();
-    buildSparkles();
-  }, 1250);
+musicButton.addEventListener(
+    "click",
+    toggleMusic
+);
+
+
+async function toggleMusic() {
+
+    if (!audio.paused) {
+
+        audio.pause();
+
+        musicIcon.textContent =
+            "▶";
+
+        return;
+
+    }
+
+
+    try {
+
+        await audio.play();
+
+        musicIcon.textContent =
+            "Ⅱ";
+
+    }
+
+    catch (error) {
+
+        showToast(
+            "Agrega cancion-xv.mp3 dentro de assets/audio/"
+        );
+
+    }
+
 }
 
-openInvitationButton.addEventListener('click', openInvitation);
 
-function updateMusicButton(isPlaying) {
-  musicButton.setAttribute('aria-pressed', String(isPlaying));
-  musicIcon.textContent = isPlaying ? 'Ⅱ' : '▶';
-  musicLabel.textContent = isPlaying ? 'Pausar música' : 'Reproducir música';
+
+audio.addEventListener(
+    "loadedmetadata",
+    updateDuration
+);
+
+
+audio.addEventListener(
+    "timeupdate",
+    updateProgress
+);
+
+
+audio.addEventListener(
+    "ended",
+    () => {
+
+        musicIcon.textContent =
+            "▶";
+
+    }
+);
+
+
+function updateDuration() {
+
+    duration.textContent =
+        formatTime(
+            audio.duration
+        );
+
 }
 
-musicButton.addEventListener('click', async () => {
-  if (!audio.paused) {
-    audio.pause();
-    updateMusicButton(false);
-    return;
-  }
 
-  try {
-    await audio.play();
-    updateMusicButton(true);
-  } catch (error) {
-    updateMusicButton(false);
-    showToast('Agrega el archivo assets/audio/cancion-xv.mp3 para activar la música.');
-  }
-});
+function updateProgress() {
 
-audio.addEventListener('error', () => {
-  updateMusicButton(false);
-});
+    if (!audio.duration) {
 
-function pad(value) {
-  return String(Math.max(0, value)).padStart(2, '0');
+        return;
+
+    }
+
+
+    const progress =
+        (
+            audio.currentTime /
+            audio.duration
+        ) * 100;
+
+
+    progressFill.style.width =
+        progress + "%";
+
+
+    currentTime.textContent =
+        formatTime(
+            audio.currentTime
+        );
+
+
+    duration.textContent =
+        formatTime(
+            audio.duration
+        );
+
 }
+
+
+function formatTime(seconds) {
+
+    if (
+        !Number.isFinite(seconds)
+    ) {
+
+        return "0:00";
+
+    }
+
+
+    const minutes =
+        Math.floor(
+            seconds / 60
+        );
+
+
+    const remainingSeconds =
+        Math.floor(
+            seconds % 60
+        );
+
+
+    return (
+        minutes +
+        ":" +
+        String(
+            remainingSeconds
+        ).padStart(
+            2,
+            "0"
+        )
+    );
+
+}
+
+
+
+/* ============================================
+   CONTADOR
+============================================ */
 
 function updateCountdown() {
-  const now = new Date();
-  const difference = eventDate - now;
 
-  if (difference <= 0) {
-    document.getElementById('days').textContent = '00';
-    document.getElementById('hours').textContent = '00';
-    document.getElementById('minutes').textContent = '00';
-    document.getElementById('seconds').textContent = '00';
-    return;
-  }
+    const now =
+        new Date();
 
-  const totalSeconds = Math.floor(difference / 1000);
-  const days = Math.floor(totalSeconds / 86400);
-  const hours = Math.floor((totalSeconds % 86400) / 3600);
-  const minutes = Math.floor((totalSeconds % 3600) / 60);
-  const seconds = totalSeconds % 60;
 
-  document.getElementById('days').textContent = pad(days);
-  document.getElementById('hours').textContent = pad(hours);
-  document.getElementById('minutes').textContent = pad(minutes);
-  document.getElementById('seconds').textContent = pad(seconds);
+    const difference =
+        eventDate - now;
+
+
+    if (difference <= 0) {
+
+        setCountdown(
+            0,
+            0,
+            0,
+            0
+        );
+
+        return;
+
+    }
+
+
+    const totalSeconds =
+        Math.floor(
+            difference / 1000
+        );
+
+
+    const days =
+        Math.floor(
+            totalSeconds /
+            86400
+        );
+
+
+    const hours =
+        Math.floor(
+            (
+                totalSeconds %
+                86400
+            ) /
+            3600
+        );
+
+
+    const minutes =
+        Math.floor(
+            (
+                totalSeconds %
+                3600
+            ) /
+            60
+        );
+
+
+    const seconds =
+        totalSeconds %
+        60;
+
+
+    setCountdown(
+        days,
+        hours,
+        minutes,
+        seconds
+    );
+
 }
+
+
+function setCountdown(
+    days,
+    hours,
+    minutes,
+    seconds
+) {
+
+    document.getElementById(
+        "days"
+    ).textContent =
+        numberFormat(days);
+
+
+    document.getElementById(
+        "hours"
+    ).textContent =
+        numberFormat(hours);
+
+
+    document.getElementById(
+        "minutes"
+    ).textContent =
+        numberFormat(minutes);
+
+
+    document.getElementById(
+        "seconds"
+    ).textContent =
+        numberFormat(seconds);
+
+}
+
+
+function numberFormat(number) {
+
+    return String(number)
+        .padStart(
+            2,
+            "0"
+        );
+
+}
+
 
 updateCountdown();
-window.setInterval(updateCountdown, 1000);
 
-function initRevealObserver() {
-  const items = document.querySelectorAll('.reveal:not(.is-visible)');
 
-  if (!('IntersectionObserver' in window)) {
-    items.forEach(item => item.classList.add('is-visible'));
-    return;
-  }
+setInterval(
+    updateCountdown,
+    1000
+);
 
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        obs.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.14,
-    rootMargin: '0px 0px -7% 0px'
-  });
 
-  items.forEach(item => observer.observe(item));
+
+/* ============================================
+   SCROLL
+============================================ */
+
+function activateScrollAnimations() {
+
+    const elements =
+        document.querySelectorAll(
+            ".reveal"
+        );
+
+
+    if (
+        !(
+            "IntersectionObserver"
+            in window
+        )
+    ) {
+
+        elements.forEach(
+            element =>
+                element.classList.add(
+                    "visible"
+                )
+        );
+
+        return;
+
+    }
+
+
+    const observer =
+        new IntersectionObserver(
+
+            entries => {
+
+                entries.forEach(
+                    entry => {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target
+                                .classList
+                                .add(
+                                    "visible"
+                                );
+
+
+                            observer
+                                .unobserve(
+                                    entry.target
+                                );
+
+                        }
+
+                    }
+                );
+
+            },
+
+            {
+
+                threshold: .12,
+
+                rootMargin:
+                    "0px 0px -3% 0px"
+
+            }
+
+        );
+
+
+    elements.forEach(
+        element =>
+            observer.observe(
+                element
+            )
+    );
+
 }
 
-function buildSparkles() {
-  const layer = document.getElementById('sparkleLayer');
-  if (!layer || layer.children.length) return;
 
-  const fragment = document.createDocumentFragment();
-  const amount = window.innerWidth < 500 ? 28 : 40;
 
-  for (let i = 0; i < amount; i += 1) {
-    const star = document.createElement('span');
-    star.className = 'sparkle';
-    star.style.left = `${Math.random() * 100}%`;
-    star.style.top = `${Math.random() * 100}%`;
-    star.style.setProperty('--duration', `${2.2 + Math.random() * 3.8}s`);
-    star.style.animationDelay = `${-Math.random() * 4}s`;
-    fragment.appendChild(star);
-  }
+/* ============================================
+   BRILLOS
+============================================ */
 
-  layer.appendChild(fragment);
+function createSparkles() {
+
+    const container =
+        document.getElementById(
+            "sparkles"
+        );
+
+
+    if (
+        !container ||
+        container.children.length
+    ) {
+
+        return;
+
+    }
+
+
+    const amount =
+        window.innerWidth < 500
+            ? 55
+            : 75;
+
+
+    for (
+        let i = 0;
+        i < amount;
+        i++
+    ) {
+
+        const sparkle =
+            document.createElement(
+                "span"
+            );
+
+
+        sparkle.classList.add(
+            "sparkle"
+        );
+
+
+        sparkle.style.left =
+            Math.random() * 100 +
+            "%";
+
+
+        sparkle.style.top =
+            Math.random() * 100 +
+            "%";
+
+
+        sparkle.style.setProperty(
+
+            "--duration",
+
+            (
+                2 +
+                Math.random() * 4
+            ) + "s"
+
+        );
+
+
+        sparkle.style.animationDelay =
+            (
+                -Math.random() * 6
+            ) + "s";
+
+
+        container.appendChild(
+            sparkle
+        );
+
+    }
+
+}
+
+
+
+/* ============================================
+   TOAST
+============================================ */
+
+function showToast(message) {
+
+    toast.textContent =
+        message;
+
+
+    toast.classList.add(
+        "show"
+    );
+
+
+    clearTimeout(
+        showToast.timer
+    );
+
+
+    showToast.timer =
+        setTimeout(
+            () => {
+
+                toast.classList.remove(
+                    "show"
+                );
+
+            },
+            3400
+        );
+
 }
