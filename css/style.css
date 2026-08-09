@@ -4719,3 +4719,289 @@ h2 {
     }
 
 }
+/* ==========================================================
+   CORRECCIÓN FINAL MÓVIL V5
+========================================================== */
+
+/* Evita que el contenedor corte los trazos de Lia */
+
+.hero {
+    overflow: visible;
+}
+
+/* El body sigue evitando scroll horizontal */
+body {
+    overflow-x: hidden;
+}
+
+
+/* ==========================================================
+   LIA - CORRECCIÓN DEFINITIVA
+========================================================== */
+
+.lia-name {
+    overflow: visible;
+
+    width: 100%;
+
+    margin: 18px 0 0;
+
+    padding:
+        0.14em
+        0.18em
+        0.08em
+        0.45em;
+
+    text-align: center;
+
+    line-height: 1;
+
+    box-sizing: border-box;
+}
+
+
+/* ==========================================================
+   CELULAR
+========================================================== */
+
+@media (max-width: 640px) {
+
+    /* ------------------------------
+       LIA
+    ------------------------------ */
+
+    .lia-name {
+
+        width: 100%;
+
+        margin:
+            12px 0 0;
+
+        padding:
+            .16em
+            .12em
+            .08em
+            .48em;
+
+        font-size:
+            clamp(
+                5.8rem,
+                30vw,
+                7.6rem
+            );
+
+        line-height: 1;
+
+        overflow: visible;
+
+        transform: none;
+    }
+
+
+    /* ------------------------------
+       HERO
+    ------------------------------ */
+
+    .hero {
+
+        overflow: visible;
+
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+
+    /* ------------------------------
+       REPRODUCTOR
+       SIN CUADRO
+    ------------------------------ */
+
+    .music-player {
+
+        width: 92%;
+
+        margin:
+            28px auto 0;
+
+        padding: 0 !important;
+
+        border: 0 !important;
+
+        border-radius: 0 !important;
+
+        background: transparent !important;
+
+        box-shadow: none !important;
+
+        backdrop-filter: none !important;
+
+        -webkit-backdrop-filter: none !important;
+    }
+
+
+    .music-player::before,
+    .music-player::after {
+
+        display: none !important;
+    }
+
+
+    /* barra */
+
+    .player-progress {
+
+        width: 100%;
+
+        padding:
+            4px
+            3px
+            19px;
+    }
+
+
+    .player-progress-track {
+
+        height: 4px;
+
+        background:
+            rgba(
+                255,
+                255,
+                255,
+                .42
+            );
+    }
+
+
+    /* botones */
+
+    .player-controls {
+
+        width: 100%;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        padding: 0;
+    }
+
+
+    .player-side-button {
+
+        width: 34px;
+
+        height: 34px;
+
+        padding: 0;
+
+        border: 0 !important;
+
+        background: transparent !important;
+
+        box-shadow: none !important;
+
+        color: white;
+
+        font-size: .9rem;
+    }
+
+
+    .main-play-button {
+
+        width: 64px;
+
+        height: 64px;
+
+        flex:
+            0 0
+            64px;
+
+        border: 0;
+
+        border-radius: 50%;
+
+        background:
+            linear-gradient(
+                145deg,
+                #ffffff,
+                #a2a5ab
+            ) !important;
+
+        box-shadow:
+            0 0 15px
+            rgba(
+                255,
+                255,
+                255,
+                .28
+            );
+    }
+
+
+    .player-time {
+
+        margin-top: 7px;
+
+        padding:
+            0 3px;
+
+        font-size: .45rem;
+    }
+
+
+    .music-message {
+
+        margin-top: 10px;
+
+        font-size: .82rem;
+    }
+
+}
+
+
+/* ==========================================================
+   CELULARES MUY PEQUEÑOS
+========================================================== */
+
+@media (max-width: 375px) {
+
+    .lia-name {
+
+        padding-left: .5em;
+
+        font-size:
+            clamp(
+                5.3rem,
+                29vw,
+                6.4rem
+            );
+    }
+
+
+    .music-player {
+
+        width: 94%;
+    }
+
+
+    .player-side-button {
+
+        width: 29px;
+
+        font-size: .78rem;
+    }
+
+
+    .main-play-button {
+
+        width: 58px;
+
+        height: 58px;
+
+        flex-basis: 58px;
+    }
+
+}
