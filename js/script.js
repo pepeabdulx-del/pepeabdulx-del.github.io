@@ -1,3 +1,7 @@
+/* ==========================================================
+   ELEMENTOS
+========================================================== */
+
 const opening =
     document.getElementById("opening");
 
@@ -13,11 +17,17 @@ const musicButton =
 const musicIcon =
     document.getElementById("musicIcon");
 
+const musicMessage =
+    document.getElementById("musicMessage");
+
 const audio =
     document.getElementById("backgroundMusic");
 
 const progressFill =
     document.getElementById("progressFill");
+
+const progressThumb =
+    document.getElementById("progressThumb");
 
 const currentTime =
     document.getElementById("currentTime");
@@ -29,6 +39,11 @@ const toast =
     document.getElementById("toast");
 
 
+
+/* ==========================================================
+   FECHA DEL EVENTO
+========================================================== */
+
 const eventDate =
     new Date(
         "2026-09-12T18:30:00-06:00"
@@ -36,9 +51,9 @@ const eventDate =
 
 
 
-/* ============================================
+/* ==========================================================
    ABRIR INVITACIÓN
-============================================ */
+========================================================== */
 
 openInvitation.addEventListener(
     "click",
@@ -68,6 +83,17 @@ function openInvitationAnimation() {
     );
 
 
+    /*
+        Intentamos iniciar la música
+        inmediatamente después del toque.
+
+        Esto ayuda especialmente en
+        iPhone y Android.
+    */
+
+    startMusicOnOpening();
+
+
     setTimeout(() => {
 
         invitation.hidden = false;
@@ -77,7 +103,7 @@ function openInvitationAnimation() {
             0
         );
 
-    }, 600);
+    }, 550);
 
 
     setTimeout(() => {
@@ -86,8 +112,10 @@ function openInvitationAnimation() {
             "is-gone"
         );
 
+
         document.body.style.overflow =
             "";
+
 
         activateScrollAnimations();
 
@@ -99,9 +127,94 @@ function openInvitationAnimation() {
 
 
 
-/* ============================================
-   REPRODUCTOR
-============================================ */
+/* ==========================================================
+   MÚSICA AL ABRIR
+========================================================== */
+
+async function startMusicOnOpening() {
+
+    try {
+
+        audio.volume = 0;
+
+
+        await audio.play();
+
+
+        setPlayingState(
+            true
+        );
+
+
+        fadeMusicIn();
+
+    }
+
+    catch (error) {
+
+        setPlayingState(
+            false
+        );
+
+
+        musicMessage.textContent =
+            "Toca ▶ para reproducir la música";
+
+    }
+
+}
+
+
+
+/* ==========================================================
+   FADE IN
+========================================================== */
+
+function fadeMusicIn() {
+
+    let volume = 0;
+
+    const targetVolume = 0.75;
+
+
+    const fade =
+        setInterval(
+            () => {
+
+                volume += 0.04;
+
+
+                if (
+                    volume >=
+                    targetVolume
+                ) {
+
+                    volume =
+                        targetVolume;
+
+
+                    clearInterval(
+                        fade
+                    );
+
+                }
+
+
+                audio.volume =
+                    volume;
+
+            },
+
+            80
+        );
+
+}
+
+
+
+/* ==========================================================
+   PLAY / PAUSA
+========================================================== */
 
 musicButton.addEventListener(
     "click",
@@ -111,12 +224,17 @@ musicButton.addEventListener(
 
 async function toggleMusic() {
 
-    if (!audio.paused) {
+    if (
+        !audio.paused
+    ) {
 
         audio.pause();
 
-        musicIcon.textContent =
-            "▶";
+
+        setPlayingState(
+            false
+        );
+
 
         return;
 
@@ -127,15 +245,32 @@ async function toggleMusic() {
 
         await audio.play();
 
-        musicIcon.textContent =
-            "Ⅱ";
+
+        if (
+            audio.volume === 0
+        ) {
+
+            audio.volume =
+                0.75;
+
+        }
+
+
+        setPlayingState(
+            true
+        );
 
     }
 
     catch (error) {
 
+        setPlayingState(
+            false
+        );
+
+
         showToast(
-            "Agrega cancion-xv.mp3 dentro de assets/audio/"
+            "No se encontró la canción. Revisa assets/audio/cancion-xv.mp3"
         );
 
     }
@@ -144,26 +279,57 @@ async function toggleMusic() {
 
 
 
-audio.addEventListener(
-    "loadedmetadata",
-    updateDuration
-);
+/* ==========================================================
+   ESTADO DEL REPRODUCTOR
+========================================================== */
+
+function setPlayingState(
+    playing
+) {
+
+    if (playing) {
+
+        musicIcon.textContent =
+            "Ⅱ";
 
 
-audio.addEventListener(
-    "timeupdate",
-    updateProgress
-);
+        musicButton.classList.add(
+            "music-playing"
+        );
 
 
-audio.addEventListener(
-    "ended",
-    () => {
+        musicMessage.textContent =
+            "La música acompaña esta noche ✦";
+
+    }
+
+    else {
 
         musicIcon.textContent =
             "▶";
 
+
+        musicButton.classList.remove(
+            "music-playing"
+        );
+
+
+        musicMessage.textContent =
+            "Toca ▶ para continuar la música";
+
     }
+
+}
+
+
+
+/* ==========================================================
+   METADATOS DEL AUDIO
+========================================================== */
+
+audio.addEventListener(
+    "loadedmetadata",
+    updateDuration
 );
 
 
@@ -177,9 +343,22 @@ function updateDuration() {
 }
 
 
+
+/* ==========================================================
+   PROGRESO DEL AUDIO
+========================================================== */
+
+audio.addEventListener(
+    "timeupdate",
+    updateProgress
+);
+
+
 function updateProgress() {
 
-    if (!audio.duration) {
+    if (
+        !audio.duration
+    ) {
 
         return;
 
@@ -197,6 +376,10 @@ function updateProgress() {
         progress + "%";
 
 
+    progressThumb.style.left =
+        progress + "%";
+
+
     currentTime.textContent =
         formatTime(
             audio.currentTime
@@ -211,10 +394,48 @@ function updateProgress() {
 }
 
 
-function formatTime(seconds) {
+
+/* ==========================================================
+   AL TERMINAR LA CANCIÓN
+========================================================== */
+
+audio.addEventListener(
+    "ended",
+    () => {
+
+        setPlayingState(
+            false
+        );
+
+
+        progressFill.style.width =
+            "0%";
+
+
+        progressThumb.style.left =
+            "0%";
+
+
+        currentTime.textContent =
+            "0:00";
+
+    }
+);
+
+
+
+/* ==========================================================
+   FORMATO DE TIEMPO
+========================================================== */
+
+function formatTime(
+    seconds
+) {
 
     if (
-        !Number.isFinite(seconds)
+        !Number.isFinite(
+            seconds
+        )
     ) {
 
         return "0:00";
@@ -235,8 +456,10 @@ function formatTime(seconds) {
 
 
     return (
-        minutes +
-        ":" +
+        minutes
+        +
+        ":"
+        +
         String(
             remainingSeconds
         ).padStart(
@@ -249,9 +472,9 @@ function formatTime(seconds) {
 
 
 
-/* ============================================
+/* ==========================================================
    CONTADOR
-============================================ */
+========================================================== */
 
 function updateCountdown() {
 
@@ -263,7 +486,9 @@ function updateCountdown() {
         eventDate - now;
 
 
-    if (difference <= 0) {
+    if (
+        difference <= 0
+    ) {
 
         setCountdown(
             0,
@@ -271,6 +496,7 @@ function updateCountdown() {
             0,
             0
         );
+
 
         return;
 
@@ -325,6 +551,11 @@ function updateCountdown() {
 }
 
 
+
+/* ==========================================================
+   MOSTRAR CONTADOR
+========================================================== */
+
 function setCountdown(
     days,
     hours,
@@ -335,36 +566,47 @@ function setCountdown(
     document.getElementById(
         "days"
     ).textContent =
-        numberFormat(days);
+        numberFormat(
+            days
+        );
 
 
     document.getElementById(
         "hours"
     ).textContent =
-        numberFormat(hours);
+        numberFormat(
+            hours
+        );
 
 
     document.getElementById(
         "minutes"
     ).textContent =
-        numberFormat(minutes);
+        numberFormat(
+            minutes
+        );
 
 
     document.getElementById(
         "seconds"
     ).textContent =
-        numberFormat(seconds);
+        numberFormat(
+            seconds
+        );
 
 }
 
 
-function numberFormat(number) {
+function numberFormat(
+    number
+) {
 
-    return String(number)
-        .padStart(
-            2,
-            "0"
-        );
+    return String(
+        number
+    ).padStart(
+        2,
+        "0"
+    );
 
 }
 
@@ -379,9 +621,9 @@ setInterval(
 
 
 
-/* ============================================
-   SCROLL
-============================================ */
+/* ==========================================================
+   ANIMACIONES AL SCROLL
+========================================================== */
 
 function activateScrollAnimations() {
 
@@ -399,11 +641,15 @@ function activateScrollAnimations() {
     ) {
 
         elements.forEach(
-            element =>
+            element => {
+
                 element.classList.add(
                     "visible"
-                )
+                );
+
+            }
         );
+
 
         return;
 
@@ -454,19 +700,22 @@ function activateScrollAnimations() {
 
 
     elements.forEach(
-        element =>
+        element => {
+
             observer.observe(
                 element
-            )
+            );
+
+        }
     );
 
 }
 
 
 
-/* ============================================
-   BRILLOS
-============================================ */
+/* ==========================================================
+   DESTELLOS
+========================================================== */
 
 function createSparkles() {
 
@@ -478,7 +727,7 @@ function createSparkles() {
 
     if (
         !container ||
-        container.children.length
+        container.children.length > 0
     ) {
 
         return;
@@ -488,8 +737,8 @@ function createSparkles() {
 
     const amount =
         window.innerWidth < 500
-            ? 55
-            : 75;
+            ? 60
+            : 80;
 
 
     for (
@@ -510,12 +759,16 @@ function createSparkles() {
 
 
         sparkle.style.left =
-            Math.random() * 100 +
+            Math.random() *
+            100
+            +
             "%";
 
 
         sparkle.style.top =
-            Math.random() * 100 +
+            Math.random() *
+            100
+            +
             "%";
 
 
@@ -524,9 +777,12 @@ function createSparkles() {
             "--duration",
 
             (
-                2 +
+                2
+                +
                 Math.random() * 4
-            ) + "s"
+            )
+            +
+            "s"
 
         );
 
@@ -534,7 +790,9 @@ function createSparkles() {
         sparkle.style.animationDelay =
             (
                 -Math.random() * 6
-            ) + "s";
+            )
+            +
+            "s";
 
 
         container.appendChild(
@@ -547,11 +805,13 @@ function createSparkles() {
 
 
 
-/* ============================================
-   TOAST
-============================================ */
+/* ==========================================================
+   MENSAJE EMERGENTE
+========================================================== */
 
-function showToast(message) {
+function showToast(
+    message
+) {
 
     toast.textContent =
         message;
@@ -576,6 +836,7 @@ function showToast(message) {
                 );
 
             },
+
             3400
         );
 
