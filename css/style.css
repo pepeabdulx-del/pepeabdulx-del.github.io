@@ -3465,3 +3465,821 @@ h2 {
     }
 
 }
+/* ==========================================================
+   MOBILE FIRST FIX
+   Optimización real para teléfonos
+========================================================== */
+
+@media (max-width: 640px) {
+
+    /* =========================
+       BASE
+    ========================== */
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    body {
+        background: #020203;
+    }
+
+    .invitation {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        overflow: hidden;
+    }
+
+
+    /* =========================
+       BORDES PLATEADOS
+    ========================== */
+
+    .silver-edge {
+        width: 7px;
+
+        background:
+            linear-gradient(
+                90deg,
+                #55585e,
+                #ffffff,
+                #a4a7ae,
+                #ffffff,
+                #55585e
+            );
+
+        box-shadow:
+            0 0 7px rgba(255,255,255,.95),
+            0 0 16px rgba(255,255,255,.55),
+            0 0 28px rgba(200,205,220,.32);
+    }
+
+    .silver-edge-left {
+        left: 0;
+    }
+
+    .silver-edge-right {
+        right: 0;
+    }
+
+
+    /* =========================
+       ENTRADA
+    ========================== */
+
+    .opening {
+        width: 100%;
+        height: 100svh;
+        min-height: 100svh;
+
+        padding:
+            max(20px, env(safe-area-inset-top))
+            12px
+            max(20px, env(safe-area-inset-bottom));
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        overflow: hidden;
+    }
+
+
+    /* NEW YORK */
+
+    .opening-ny-title {
+        top: 5%;
+
+        font-size: clamp(
+            1.7rem,
+            8vw,
+            2.5rem
+        );
+
+        letter-spacing: .22em;
+
+        opacity: .85;
+    }
+
+
+    /* skyline más visible */
+
+    .opening-skyline {
+        bottom: 0;
+
+        height: 29vh;
+
+        gap: 3px;
+
+        opacity: .9;
+
+        transform: scaleX(1.12);
+        transform-origin: bottom center;
+    }
+
+    .building {
+        width: 11%;
+    }
+
+    .empire {
+        width: 15%;
+    }
+
+
+    /* =========================
+       GLOBOS ENTRADA
+    ========================== */
+
+    .opening-balloon-group {
+        top: 8%;
+
+        width: 95px;
+        height: 170px;
+
+        transform: scale(.78);
+    }
+
+    .balloons-left {
+        left: -25px;
+
+        transform-origin: top left;
+    }
+
+    .balloons-right {
+        right: -25px;
+
+        transform-origin: top right;
+    }
+
+    .ny-balloon {
+        width: 67px;
+        height: 84px;
+    }
+
+    .balloon-sm {
+        width: 53px;
+        height: 69px;
+
+        left: 50px;
+        top: 32px;
+    }
+
+    .balloon-glitter {
+        width: 56px;
+        height: 72px;
+
+        left: 22px;
+        top: 88px;
+    }
+
+
+    /* =========================
+       SOBRE
+    ========================== */
+
+    .envelope {
+        width: min(84vw, 350px);
+
+        margin: 0;
+
+        transform: translateY(-2vh);
+    }
+
+    .envelope-name {
+        font-size: clamp(
+            4.6rem,
+            21vw,
+            6.3rem
+        );
+    }
+
+    .envelope-subtitle {
+        margin-top: 22px;
+
+        font-size: 1.03rem;
+    }
+
+    .seal {
+        width: 72px;
+        height: 72px;
+    }
+
+    .seal-inner {
+        font-size: .53rem;
+    }
+
+
+    /* instrucción */
+
+    .opening-instruction {
+        bottom:
+            max(
+                28px,
+                calc(env(safe-area-inset-bottom) + 15px)
+            );
+    }
+
+    .opening-arrow {
+        font-size: 1.35rem;
+    }
+
+    .opening-instruction p {
+        font-size: .56rem;
+
+        letter-spacing: .14em;
+    }
+
+
+    /* =========================
+       SECCIONES
+    ========================== */
+
+    .section {
+        min-height: auto;
+
+        padding:
+            55px
+            28px;
+
+        justify-content: flex-start;
+    }
+
+    .section + .section::before {
+        left: 17%;
+        right: 17%;
+    }
+
+
+    /* =========================
+       HERO PRINCIPAL
+    ========================== */
+
+    .hero {
+        min-height: 100svh;
+
+        padding-top:
+            max(
+                72px,
+                calc(env(safe-area-inset-top) + 55px)
+            );
+
+        padding-bottom: 50px;
+
+        justify-content: flex-start;
+    }
+
+
+    /* estrellas */
+
+    .hero-stars {
+        opacity: .65;
+    }
+
+
+    /* NEW YORK fondo */
+
+    .hero-new-york {
+        top: 22%;
+
+        font-size: 19vw;
+
+        letter-spacing: .05em;
+
+        -webkit-text-stroke:
+            1px rgba(255,255,255,.065);
+    }
+
+
+    /* skyline */
+
+    .hero-skyline {
+        height: 20%;
+
+        opacity: .42;
+
+        transform: scaleX(1.1);
+    }
+
+
+    /* globos */
+
+    .hero-balloon-group {
+        top: 3%;
+
+        transform: scale(.77);
+    }
+
+    .hero-balloon-left {
+        left: -29px;
+
+        transform-origin: top left;
+    }
+
+    .hero-balloon-right {
+        right: -29px;
+
+        transform-origin: top right;
+    }
+
+
+    /* Lia */
+
+    .eyebrow {
+        font-size: .53rem;
+
+        letter-spacing: .19em;
+    }
+
+    .lia-name {
+        margin-top: 30px;
+
+        font-size: clamp(
+            6.7rem,
+            34vw,
+            9rem
+        );
+
+        line-height: .7;
+    }
+
+    .hero-subtitle {
+        margin-top: 24px;
+
+        font-size: 1.55rem;
+    }
+
+    .ornament {
+        margin: 18px 0;
+    }
+
+    .ornament span {
+        width: 48px;
+    }
+
+    .hero-date {
+        font-size: .65rem;
+
+        letter-spacing: .21em;
+    }
+
+
+    /* =========================
+       REPRODUCTOR
+    ========================== */
+
+    .music-player {
+        width: 100%;
+
+        margin-top: 34px;
+
+        padding:
+            16px
+            15px
+            14px;
+
+        border-radius: 20px;
+    }
+
+    .disc {
+        width: 43px;
+        height: 43px;
+    }
+
+    .track-information strong {
+        font-size: 1.05rem;
+    }
+
+    .track-information span {
+        font-size: .5rem;
+    }
+
+    .player-controls {
+        margin-top: 8px;
+    }
+
+    .main-play-button {
+        width: 52px;
+        height: 52px;
+    }
+
+    .player-secondary {
+        font-size: .72rem;
+    }
+
+    .music-hint {
+        font-size: .45rem;
+
+        letter-spacing: .08em;
+    }
+
+    .scroll-indicator {
+        margin-top: 25px;
+    }
+
+
+    /* =========================
+       FRASE
+    ========================== */
+
+    .message-section {
+        min-height: auto;
+
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+
+    .message-section p {
+        font-size: clamp(
+            1.8rem,
+            7.6vw,
+            2.35rem
+        );
+
+        line-height: 1.18;
+    }
+
+    .message-section strong {
+        font-size: 3.3rem;
+    }
+
+
+    /* =========================
+       TITULOS
+    ========================== */
+
+    h2 {
+        font-size: clamp(
+            2.7rem,
+            11vw,
+            3.5rem
+        );
+    }
+
+
+    /* =========================
+       CALENDARIO
+    ========================== */
+
+    .date-section {
+        padding-top: 60px;
+        padding-bottom: 65px;
+    }
+
+    .calendar {
+        width: 100%;
+
+        padding:
+            20px
+            12px;
+
+        border-radius: 15px;
+    }
+
+    .calendar-week {
+        font-size: .45rem;
+    }
+
+    .calendar-days span {
+        min-height: 35px;
+
+        font-size: .7rem;
+    }
+
+    .special-day::before {
+        width: 31px;
+        height: 31px;
+    }
+
+    .special-day i {
+        right: -2px;
+
+        font-size: 1.5rem;
+    }
+
+
+    /* =========================
+       CONTADOR
+    ========================== */
+
+    .countdown-container {
+        width: 100%;
+
+        margin-top: 30px;
+    }
+
+    .faltan {
+        font-size: 2.5rem;
+    }
+
+    .countdown strong {
+        font-size: clamp(
+            1.65rem,
+            8vw,
+            2.3rem
+        );
+    }
+
+    .countdown span {
+        font-size: .4rem;
+
+        letter-spacing: .04em;
+    }
+
+    .countdown > div {
+        padding:
+            16px
+            2px;
+    }
+
+
+    /* =========================
+       FIESTA
+    ========================== */
+
+    .event-section {
+        min-height: auto;
+
+        padding-top: 60px;
+        padding-bottom: 65px;
+    }
+
+    .mini-skyline {
+        width: 100%;
+        height: 60px;
+
+        margin-bottom: 12px;
+    }
+
+    .event-place {
+        font-size: 1.45rem;
+
+        line-height: 1.15;
+    }
+
+    .event-info {
+        font-size: 1.15rem;
+    }
+
+
+    /* reloj */
+
+    .time-row {
+        margin-top: 22px;
+    }
+
+    .clock-icon {
+        width: 42px;
+        height: 42px;
+    }
+
+    .time-row p {
+        font-size: .85rem;
+    }
+
+
+    /* ubicación */
+
+    .silver-button {
+        width: 100%;
+
+        min-height: 56px;
+
+        margin-top: 27px;
+
+        padding:
+            12px
+            14px;
+
+        font-size: .68rem;
+    }
+
+
+    /* =========================
+       REGALO
+    ========================== */
+
+    .gift-section {
+        min-height: auto;
+
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    .gift-image {
+        width: 92px;
+        height: 92px;
+    }
+
+    .gift-section p {
+        font-size: 1.15rem;
+
+        line-height: 1.35;
+    }
+
+
+    /* =========================
+       VESTIMENTA
+    ========================== */
+
+    .dress-section {
+        min-height: auto;
+
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    .dress-image {
+        width: min(
+            190px,
+            55vw
+        );
+
+        height: 135px;
+    }
+
+    .dress-code {
+        margin-top: 13px;
+
+        font-size: 1.65rem;
+    }
+
+    .all-black {
+        font-size: .68rem;
+    }
+
+
+    /* =========================
+       CONFIRMACION
+    ========================== */
+
+    .rsvp-section {
+        min-height: auto;
+
+        padding-top: 60px;
+        padding-bottom: 65px;
+    }
+
+    .rsvp-section > p {
+        font-size: 1.08rem;
+    }
+
+    .whatsapp-button {
+        width: 100%;
+
+        min-height: 70px;
+
+        margin-top: 25px;
+
+        padding:
+            9px
+            13px;
+
+        border-radius: 19px;
+    }
+
+    .whatsapp-circle {
+        width: 44px;
+        height: 44px;
+
+        flex-basis: 44px;
+    }
+
+    .whatsapp-text strong {
+        font-size: 1rem;
+    }
+
+    .whatsapp-text small {
+        font-size: .43rem;
+    }
+
+
+    /* =========================
+       FINAL
+    ========================== */
+
+    .final-section {
+        min-height: 55svh;
+
+        padding-top: 55px;
+
+        padding-bottom:
+            max(
+                65px,
+                calc(env(safe-area-inset-bottom) + 45px)
+            );
+    }
+
+    .final-skyline {
+        width: 120%;
+        height: 100px;
+    }
+
+    .final-section p {
+        font-size: clamp(
+            3.2rem,
+            15vw,
+            4.5rem
+        );
+    }
+
+
+    /* =========================
+       PARTICULAS
+    ========================== */
+
+    .sparkle {
+        width: 2.5px;
+        height: 2.5px;
+    }
+
+}
+
+
+
+/* ==========================================================
+   CELULARES MUY PEQUEÑOS
+   iPhone SE y similares
+========================================================== */
+
+@media (max-width: 375px) {
+
+    .section {
+        padding-left: 23px;
+        padding-right: 23px;
+    }
+
+    .envelope {
+        width: 82vw;
+    }
+
+    .lia-name {
+        font-size: 6.4rem;
+    }
+
+    .music-player {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .player-secondary {
+        font-size: .65rem;
+    }
+
+    .calendar-days span {
+        font-size: .66rem;
+    }
+
+    .countdown strong {
+        font-size: 1.6rem;
+    }
+
+}
+
+
+
+/* ==========================================================
+   CELULARES BAJOS
+   Ej: pantallas de 667px de alto
+========================================================== */
+
+@media (max-width: 640px) and (max-height: 700px) {
+
+    .opening-ny-title {
+        top: 3%;
+    }
+
+    .opening-balloon-group {
+        top: 5%;
+
+        transform: scale(.68);
+    }
+
+    .envelope {
+        width: min(72vw, 320px);
+
+        transform: translateY(-1vh);
+    }
+
+    .opening-instruction {
+        bottom: 18px;
+    }
+
+    .hero {
+        padding-top: 55px;
+    }
+
+    .lia-name {
+        font-size: 6.4rem;
+
+        margin-top: 22px;
+    }
+
+    .music-player {
+        margin-top: 25px;
+    }
+
+}
