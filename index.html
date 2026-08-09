@@ -1,176 +1,818 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#050505">
-  <meta name="description" content="Invitación digital de los XV años de Lia — 12 de septiembre de 2026.">
-  <title>Lia · Mis XV años</title>
+    <meta charset="UTF-8">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+
+    <meta name="theme-color" content="#020203">
+
+    <meta
+        name="description"
+        content="Invitación digital de los XV años de Lia"
+    >
+
+    <title>Lia | Mis XV años</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
+
 <body>
-  <div class="opening" id="opening" aria-label="Abrir invitación">
-    <div class="opening__stars" aria-hidden="true"></div>
-    <div class="opening__skyline" aria-hidden="true"></div>
 
-    <div class="balloon balloon--one" aria-hidden="true"></div>
-    <div class="balloon balloon--two" aria-hidden="true"></div>
-    <div class="balloon balloon--three" aria-hidden="true"></div>
+    <!-- ==========================================
+         ENTRADA
+    =========================================== -->
 
-    <button class="envelope" id="openInvitation" type="button" aria-label="Toca para abrir la invitación">
-      <span class="envelope__back"></span>
-      <span class="envelope__letter">
-        <span class="envelope__lia">Lia</span>
-        <span class="envelope__subtitle">Mis XV años</span>
-      </span>
-      <span class="envelope__front"></span>
-      <span class="envelope__flap"></span>
-      <span class="seal">
-        <span class="seal__star">✦</span>
-        <span class="seal__text">Toca para abrir</span>
-      </span>
-    </button>
+    <section class="opening" id="opening">
 
-    <div class="opening__hint" aria-hidden="true">
-      <span>✦</span> TOCA PARA ABRIR LA INVITACIÓN <span>✦</span>
-    </div>
-  </div>
+        <div class="star-field"></div>
+        <div class="opening-glow"></div>
 
-  <main class="invitation" id="invitation" hidden>
-    <div class="silver-frame" aria-hidden="true"></div>
-    <div class="sparkle-layer" id="sparkleLayer" aria-hidden="true"></div>
+        <div class="opening-ny-title">
+            NEW YORK
+        </div>
 
-    <section class="hero section">
-      <div class="hero__balloons hero__balloons--left" aria-hidden="true">
-        <span></span><span></span><span></span>
-      </div>
-      <div class="hero__balloons hero__balloons--right" aria-hidden="true">
-        <span></span><span></span>
-      </div>
+        <div class="opening-skyline">
 
-      <div class="hero__eyebrow reveal">Una noche para recordar</div>
-      <h1 class="hero__name" aria-label="Lia">Lia</h1>
-      <p class="hero__subtitle reveal">Mis XV años</p>
-      <div class="hero__ornament reveal" aria-hidden="true"><span></span>✦<span></span></div>
-      <p class="hero__date reveal">12 · 09 · 2026</p>
+            <span class="building b1"></span>
+            <span class="building b2"></span>
+            <span class="building b3"></span>
 
-      <div class="music-card reveal">
-        <button class="music-button" id="musicButton" type="button" aria-pressed="false">
-          <span class="music-button__icon" id="musicIcon">▶</span>
-          <span class="music-button__label" id="musicLabel">Reproducir música</span>
+            <span class="building empire">
+                <i></i>
+            </span>
+
+            <span class="building b4"></span>
+            <span class="building b5"></span>
+            <span class="building b6"></span>
+
+        </div>
+
+
+        <!-- Globos izquierda -->
+
+        <div class="opening-balloon-group balloons-left">
+
+            <span class="ny-balloon balloon-lg"></span>
+            <span class="ny-balloon balloon-sm"></span>
+            <span class="ny-balloon balloon-glitter"></span>
+
+        </div>
+
+
+        <!-- Globos derecha -->
+
+        <div class="opening-balloon-group balloons-right">
+
+            <span class="ny-balloon balloon-sm"></span>
+            <span class="ny-balloon balloon-lg"></span>
+            <span class="ny-balloon balloon-glitter"></span>
+
+        </div>
+
+
+        <!-- SOBRE -->
+
+        <button
+            class="envelope"
+            id="openInvitation"
+            type="button"
+            aria-label="Abrir invitación"
+        >
+
+            <span class="envelope-shadow"></span>
+
+            <span class="envelope-base">
+
+                <span class="envelope-line line-left"></span>
+                <span class="envelope-line line-right"></span>
+
+            </span>
+
+
+            <span class="envelope-letter">
+
+                <span class="letter-stars">
+                    ✦
+                </span>
+
+                <span class="envelope-name">
+                    Lia
+                </span>
+
+                <span class="envelope-subtitle">
+                    Mis XV años
+                </span>
+
+            </span>
+
+
+            <span class="envelope-front-left"></span>
+            <span class="envelope-front-right"></span>
+
+            <span class="envelope-flap"></span>
+
+
+            <span class="seal">
+
+                <span class="seal-inner">
+
+                    <span class="seal-star">
+                        ✦
+                    </span>
+
+                    <span>
+                        Toca
+                    </span>
+
+                    <small>
+                        para abrir
+                    </small>
+
+                </span>
+
+            </span>
+
         </button>
-        <span class="music-card__hint">← Toca para reproducir la música</span>
-        <audio id="backgroundMusic" preload="none" loop>
-          <source src="assets/audio/cancion-xv.mp3" type="audio/mpeg">
-        </audio>
-      </div>
 
-      <div class="scroll-cue reveal" aria-hidden="true">
-        <span>Desliza</span>
-        <i></i>
-      </div>
-    </section>
 
-    <section class="message section section--compact reveal">
-      <p>Quiero festejar mis XV bailando y gozando con la gente que más quiero.</p>
-      <strong>¿Vienes?</strong>
-    </section>
+        <div class="opening-instruction">
 
-    <section class="date-section section">
-      <div class="section-heading reveal">
-        <span class="section-heading__kicker">SAVE THE DATE</span>
-        <h2>Septiembre 2026</h2>
-      </div>
+            <span class="opening-arrow">
+                ↑
+            </span>
 
-      <div class="calendar reveal" aria-label="Calendario de septiembre de 2026">
-        <div class="calendar__weekdays" aria-hidden="true">
-          <span>DOM</span><span>LUN</span><span>MAR</span><span>MIÉ</span><span>JUE</span><span>VIE</span><span>SÁB</span>
+            <p>
+                Toca para abrir la invitación
+            </p>
+
         </div>
-        <div class="calendar__days">
-          <span class="empty"></span><span class="empty"></span>
-          <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
-          <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span>
-          <span class="calendar__special" aria-label="12 de septiembre, fecha del evento"><b>12</b><i>♡</i></span>
-          <span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span>
-          <span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span>
-          <span>27</span><span>28</span><span>29</span><span>30</span>
-        </div>
-      </div>
 
-      <div class="countdown-wrap reveal">
-        <p class="countdown-wrap__title">Faltan...</p>
-        <div class="countdown" id="countdown" role="timer" aria-live="polite">
-          <div><strong id="days">00</strong><span>Días</span></div>
-          <div><strong id="hours">00</strong><span>Horas</span></div>
-          <div><strong id="minutes">00</strong><span>Minutos</span></div>
-          <div><strong id="seconds">00</strong><span>Segundos</span></div>
-        </div>
-      </div>
     </section>
 
-    <section class="event section reveal">
-      <div class="nyc-line" aria-hidden="true"></div>
-      <span class="section-heading__kicker">CELEBRACIÓN</span>
-      <h2>Fiesta</h2>
-      <div class="event__details">
-        <p class="event__place">Roof Top Edificio Cámara de Industria</p>
-        <p>Nivel 16</p>
-        <div class="event__time"><span aria-hidden="true">◷</span> 6:30 PM</div>
-      </div>
-      <a class="silver-button" href="https://waze.com/ul/h9fxehkc9s" target="_blank" rel="noopener noreferrer">
-        <span aria-hidden="true">⌖</span>
-        Toca para ver la ubicación
-      </a>
-    </section>
 
-    <section class="gift section reveal">
-      <div class="icon-card" aria-hidden="true">
-        <div class="gift-icon"><span></span></div>
-      </div>
-      <span class="section-heading__kicker">UN DETALLE</span>
-      <h2>Regalo</h2>
-      <p>Lo más importante para mí es compartir este momento contigo.</p>
-      <p>En caso desees obsequiarme un presente, preferiría <strong>lluvia de sobres.</strong></p>
-    </section>
 
-    <section class="dress section reveal">
-      <span class="section-heading__kicker">DRESS CODE</span>
-      <h2>Código de vestimenta</h2>
-      <div class="dress__visual" aria-hidden="true">
-        <div class="dress-figure dress-figure--dress"></div>
-        <div class="dress-figure dress-figure--suit"></div>
-      </div>
-      <p class="dress__code">Formal · All Black</p>
-      <p class="dress__note">Elegante, sobrio y completamente negro.</p>
-    </section>
+    <!-- ==========================================
+         INVITACIÓN
+    =========================================== -->
 
-    <section class="rsvp section reveal">
-      <span class="section-heading__kicker">RSVP</span>
-      <h2>Confirmación de asistencia</h2>
-      <p>Tu confirmación nos ayudará a preparar cada detalle para esta noche especial.</p>
-      <a
-        class="silver-button silver-button--whatsapp"
-        href="https://wa.me/50255817732?text=Hola%2C%20confirmo%20mi%20asistencia%20a%20los%20XV%20de%20Lia.%20%C2%A1Muchas%20gracias!"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <span class="whatsapp-mark" aria-hidden="true">◉</span>
-        Confirmar por WhatsApp
-      </a>
-    </section>
+    <main
+        class="invitation"
+        id="invitation"
+        hidden
+    >
 
-    <footer class="finale section reveal">
-      <div class="finale__skyline" aria-hidden="true"></div>
-      <p>NYC is waiting for you!</p>
-      <span>12 · 09 · 2026</span>
-    </footer>
-  </main>
+        <div class="silver-edge silver-edge-left"></div>
+        <div class="silver-edge silver-edge-right"></div>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="js/script.js"></script>
+        <div
+            class="sparkles"
+            id="sparkles"
+            aria-hidden="true"
+        ></div>
+
+
+        <!-- ==========================================
+             HERO
+        =========================================== -->
+
+        <section class="section hero">
+
+            <div class="hero-stars"></div>
+
+            <div class="hero-new-york">
+                NEW YORK
+            </div>
+
+
+            <div class="hero-skyline">
+
+                <span class="tower t1"></span>
+                <span class="tower t2"></span>
+
+                <span class="tower hero-empire">
+                    <i></i>
+                </span>
+
+                <span class="tower t3"></span>
+                <span class="tower t4"></span>
+                <span class="tower t5"></span>
+
+            </div>
+
+
+            <div class="hero-balloon-group hero-balloon-left">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+
+            <div class="hero-balloon-group hero-balloon-right">
+
+                <span></span>
+                <span></span>
+
+            </div>
+
+
+            <p class="eyebrow reveal">
+                UNA NOCHE EN NEW YORK
+            </p>
+
+
+            <h1 class="lia-name">
+                Lia
+            </h1>
+
+
+            <p class="hero-subtitle reveal">
+                Mis XV años
+            </p>
+
+
+            <div class="ornament reveal">
+
+                <span></span>
+
+                ✦
+
+                <span></span>
+
+            </div>
+
+
+            <p class="hero-date reveal">
+                12 · 09 · 2026
+            </p>
+
+
+
+            <!-- =====================================
+                 REPRODUCTOR
+            ====================================== -->
+
+            <div class="music-player reveal">
+
+                <div class="player-header">
+
+                    <div class="disc">
+
+                        <div class="disc-center"></div>
+
+                    </div>
+
+
+                    <div class="track-information">
+
+                        <strong>
+                            XV de Lia
+                        </strong>
+
+                        <span>
+                            Música de la noche
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="progress-area">
+
+                    <div class="progress-bar">
+
+                        <span
+                            class="progress-fill"
+                            id="progressFill"
+                        ></span>
+
+                    </div>
+
+
+                    <div class="player-times">
+
+                        <span id="currentTime">
+                            0:00
+                        </span>
+
+                        <span id="duration">
+                            0:00
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="player-controls">
+
+                    <button
+                        class="player-secondary"
+                        type="button"
+                        aria-label="Aleatorio"
+                    >
+                        ⤨
+                    </button>
+
+
+                    <button
+                        class="player-secondary"
+                        type="button"
+                        aria-label="Anterior"
+                    >
+                        ◀
+                    </button>
+
+
+                    <button
+                        class="main-play-button"
+                        id="musicButton"
+                        type="button"
+                        aria-label="Reproducir música"
+                    >
+
+                        <span id="musicIcon">
+                            ▶
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="player-secondary"
+                        type="button"
+                        aria-label="Siguiente"
+                    >
+                        ▶
+                    </button>
+
+
+                    <button
+                        class="player-secondary"
+                        type="button"
+                        aria-label="Repetir"
+                    >
+                        ↻
+                    </button>
+
+                </div>
+
+
+                <p class="music-hint">
+                    ↑ Toca para reproducir la música
+                </p>
+
+
+                <audio
+                    id="backgroundMusic"
+                    preload="metadata"
+                    loop
+                >
+
+                    <source
+                        src="assets/audio/cancion-xv.mp3"
+                        type="audio/mpeg"
+                    >
+
+                </audio>
+
+            </div>
+
+
+            <div class="scroll-indicator reveal">
+
+                <span>
+                    Desliza
+                </span>
+
+                <i></i>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             MENSAJE
+        =========================================== -->
+
+        <section class="section message-section reveal">
+
+            <span class="tiny-star">
+                ✦
+            </span>
+
+            <p>
+                Quiero festejar mis XV bailando y gozando
+                con la gente que más quiero.
+            </p>
+
+            <strong>
+                ¿Vienes?
+            </strong>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             FECHA
+        =========================================== -->
+
+        <section class="section date-section">
+
+            <div class="section-title reveal">
+
+                <span>
+                    SAVE THE DATE
+                </span>
+
+                <h2>
+                    Septiembre 2026
+                </h2>
+
+            </div>
+
+
+            <div class="calendar reveal">
+
+                <div class="calendar-week">
+
+                    <span>DOM</span>
+                    <span>LUN</span>
+                    <span>MAR</span>
+                    <span>MIÉ</span>
+                    <span>JUE</span>
+                    <span>VIE</span>
+                    <span>SÁB</span>
+
+                </div>
+
+
+                <div class="calendar-days">
+
+                    <span></span>
+                    <span></span>
+
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5</span>
+
+                    <span>6</span>
+                    <span>7</span>
+                    <span>8</span>
+                    <span>9</span>
+                    <span>10</span>
+                    <span>11</span>
+
+
+                    <span class="special-day">
+
+                        <b>
+                            12
+                        </b>
+
+                        <i>
+                            ♡
+                        </i>
+
+                    </span>
+
+
+                    <span>13</span>
+                    <span>14</span>
+                    <span>15</span>
+                    <span>16</span>
+                    <span>17</span>
+                    <span>18</span>
+                    <span>19</span>
+
+                    <span>20</span>
+                    <span>21</span>
+                    <span>22</span>
+                    <span>23</span>
+                    <span>24</span>
+                    <span>25</span>
+                    <span>26</span>
+
+                    <span>27</span>
+                    <span>28</span>
+                    <span>29</span>
+                    <span>30</span>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="countdown-container reveal">
+
+                <p class="faltan">
+                    Faltan...
+                </p>
+
+
+                <div class="countdown">
+
+                    <div>
+
+                        <strong id="days">
+                            00
+                        </strong>
+
+                        <span>
+                            Días
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong id="hours">
+                            00
+                        </strong>
+
+                        <span>
+                            Horas
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong id="minutes">
+                            00
+                        </strong>
+
+                        <span>
+                            Minutos
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong id="seconds">
+                            00
+                        </strong>
+
+                        <span>
+                            Segundos
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             FIESTA
+        =========================================== -->
+
+        <section class="section event-section reveal">
+
+            <div class="mini-skyline"></div>
+
+            <h2>
+                Fiesta
+            </h2>
+
+
+            <div class="event-info">
+
+                <p class="event-place">
+                    Roof Top Edificio Cámara de Industria
+                </p>
+
+                <p>
+                    Nivel 16
+                </p>
+
+
+                <div class="time-row">
+
+                    <div class="clock-icon">
+
+                        <span class="clock-hand clock-hour"></span>
+                        <span class="clock-hand clock-minute"></span>
+
+                    </div>
+
+                    <p>
+                        6:30 PM
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <a
+                class="silver-button location-button"
+                href="https://waze.com/ul/h9fxehkc9s"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <span class="location-icon">
+                    ⌖
+                </span>
+
+                <span>
+                    Toca para ver la ubicación
+                </span>
+
+            </a>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             REGALO
+        =========================================== -->
+
+        <section class="section gift-section reveal">
+
+            <div class="image-icon-box">
+
+                <img
+                    src="assets/images/gift.jfif"
+                    alt="Regalo"
+                    class="section-image gift-image"
+                >
+
+            </div>
+
+
+            <h2>
+                Regalo
+            </h2>
+
+
+            <p>
+                Lo más importante para mí es compartir
+                este momento contigo.
+            </p>
+
+
+            <p>
+                En caso desees obsequiarme un presente,
+                preferiría
+                <strong>
+                    lluvia de sobres.
+                </strong>
+            </p>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             CÓDIGO VESTIMENTA
+        =========================================== -->
+
+        <section class="section dress-section reveal">
+
+            <h2>
+                Código de vestimenta
+            </h2>
+
+
+            <div class="dress-image-container">
+
+                <img
+                    src="assets/images/dress-code.jfif"
+                    alt="Código de vestimenta formal"
+                    class="section-image dress-image"
+                >
+
+            </div>
+
+
+            <p class="dress-code">
+                Formal
+            </p>
+
+            <p class="all-black">
+                ALL BLACK
+            </p>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             CONFIRMACIÓN
+        =========================================== -->
+
+        <section class="section rsvp-section reveal">
+
+            <h2>
+                Confirmación de asistencia
+            </h2>
+
+
+            <p>
+                Confirma tu asistencia directamente
+                por WhatsApp.
+            </p>
+
+
+            <a
+                class="whatsapp-button"
+                href="https://wa.me/50255817732?text=Hola%2C%20confirmo%20mi%20asistencia%20a%20los%20XV%20de%20Lia.%20%C2%A1Muchas%20gracias!"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <span class="whatsapp-circle">
+                    ☎
+                </span>
+
+
+                <span class="whatsapp-text">
+
+                    <small>
+                        TOCA PARA
+                    </small>
+
+                    <strong>
+                        Confirmar asistencia
+                    </strong>
+
+                </span>
+
+
+                <span class="whatsapp-arrow">
+                    ›
+                </span>
+
+            </a>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             FINAL
+        =========================================== -->
+
+        <footer class="section final-section reveal">
+
+            <div class="footer-stars"></div>
+
+            <div class="final-skyline"></div>
+
+            <p>
+                NYC is waiting for you!
+            </p>
+
+            <span>
+                12 · 09 · 2026
+            </span>
+
+        </footer>
+
+    </main>
+
+
+    <div
+        class="toast"
+        id="toast"
+    ></div>
+
+
+    <script src="js/script.js"></script>
+
 </body>
+
 </html>
