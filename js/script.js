@@ -55,7 +55,7 @@ const playIconSrc =
     "assets/icons/icon-play.png";
 
 const pauseIconSrc =
-    "assets/icons/icon-pause.png";
+    "assets/icons/icon-pause.jpeg";
 
 
 
