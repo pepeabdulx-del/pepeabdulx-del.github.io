@@ -60,7 +60,8 @@ const pauseIconSrc =
 
 
 /* ==========================================================
-   EVENTO
+   FECHA DEL EVENTO
+   GUATEMALA UTC -6
 ========================================================== */
 
 const eventDate =
@@ -103,10 +104,9 @@ function openInvitationAnimation() {
 
 
     /*
-        El usuario acaba de tocar el sobre.
-
-        Aprovechamos este gesto para intentar
-        reproducir la música inmediatamente.
+        El toque del sobre cuenta como interacción
+        del usuario y permite intentar reproducir
+        audio en iPhone y Android.
     */
 
     startMusicOnOpening();
@@ -126,7 +126,7 @@ function openInvitationAnimation() {
 
         },
 
-        550
+        560
     );
 
 
@@ -148,7 +148,7 @@ function openInvitationAnimation() {
 
         },
 
-        1250
+        1280
     );
 
 }
@@ -163,7 +163,8 @@ async function startMusicOnOpening() {
 
     try {
 
-        audio.volume = 0;
+        audio.volume =
+            0;
 
 
         await audio.play();
@@ -200,7 +201,8 @@ async function startMusicOnOpening() {
 
 function fadeMusicIn() {
 
-    let volume = 0;
+    let volume =
+        0;
 
 
     const targetVolume =
@@ -278,7 +280,8 @@ async function toggleMusic() {
 
 
         if (
-            audio.volume === 0
+            audio.volume ===
+            0
         ) {
 
             audio.volume =
@@ -311,7 +314,7 @@ async function toggleMusic() {
 
 
 /* ==========================================================
-   ESTADO VISUAL
+   ESTADO VISUAL DEL REPRODUCTOR
 ========================================================== */
 
 function setPlayingState(
@@ -363,7 +366,7 @@ function setPlayingState(
 
 
 /* ==========================================================
-   METADATOS
+   METADATOS DEL AUDIO
 ========================================================== */
 
 audio.addEventListener(
@@ -384,7 +387,7 @@ function updateDuration() {
 
 
 /* ==========================================================
-   PROGRESO
+   PROGRESO DE AUDIO
 ========================================================== */
 
 audio.addEventListener(
@@ -414,11 +417,13 @@ function updateProgress() {
 
 
     progressFill.style.width =
-        progress + "%";
+        progress +
+        "%";
 
 
     progressThumb.style.left =
-        progress + "%";
+        progress +
+        "%";
 
 
     currentTime.textContent =
@@ -441,7 +446,7 @@ function updateProgress() {
 ========================================================== */
 
 progressTrack.addEventListener(
-    "click",
+    "pointerdown",
     seekAudio
 );
 
@@ -462,14 +467,24 @@ function seekAudio(event) {
             .getBoundingClientRect();
 
 
-    const clickPosition =
+    let position =
         event.clientX
         -
         rectangle.left;
 
 
+    position =
+        Math.max(
+            0,
+            Math.min(
+                position,
+                rectangle.width
+            )
+        );
+
+
     const percentage =
-        clickPosition
+        position
         /
         rectangle.width;
 
@@ -533,13 +548,15 @@ function formatTime(
 
     const minutes =
         Math.floor(
-            seconds / 60
+            seconds /
+            60
         );
 
 
     const remainingSeconds =
         Math.floor(
-            seconds % 60
+            seconds %
+            60
         );
 
 
@@ -577,7 +594,8 @@ function updateCountdown() {
 
 
     if (
-        difference <= 0
+        difference <=
+        0
     ) {
 
         setCountdown(
@@ -595,7 +613,8 @@ function updateCountdown() {
 
     const totalSeconds =
         Math.floor(
-            difference / 1000
+            difference /
+            1000
         );
 
 
@@ -690,6 +709,11 @@ function setCountdown(
 }
 
 
+
+/* ==========================================================
+   FORMATO NÚMEROS
+========================================================== */
+
 function numberFormat(
     number
 ) {
@@ -702,6 +726,7 @@ function numberFormat(
     );
 
 }
+
 
 
 updateCountdown();
@@ -834,6 +859,7 @@ function createSparkles() {
     const amount =
         window.innerWidth <
         500
+
             ? 60
             : 80;
 
