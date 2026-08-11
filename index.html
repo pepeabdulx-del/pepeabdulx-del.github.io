@@ -19,21 +19,30 @@
     <title>Lia | Mis XV años</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&display=swap"
         rel="stylesheet"
     >
 
-    <link rel="stylesheet" href="css/style.css?v=7">
+    <link
+        rel="stylesheet"
+        href="css/style.css?v=10"
+    >
 </head>
 
 
 <body>
 
+
     <!-- =====================================================
-         PORTADA
+         PANTALLA DE APERTURA
     ====================================================== -->
 
     <section
@@ -53,21 +62,29 @@
 
 
         <!-- =================================================
-             SKYLINE PORTADA
+             SKYLINE
         ================================================== -->
 
         <div class="opening-skyline">
 
             <span class="building b1"></span>
+
             <span class="building b2"></span>
+
             <span class="building b3"></span>
 
+
             <span class="building empire">
+
                 <i></i>
+
             </span>
 
+
             <span class="building b4"></span>
+
             <span class="building b5"></span>
+
             <span class="building b6"></span>
 
         </div>
@@ -81,7 +98,9 @@
         <div class="opening-balloon-group balloons-left">
 
             <span class="ny-balloon balloon-lg"></span>
+
             <span class="ny-balloon balloon-sm"></span>
+
             <span class="ny-balloon balloon-glitter"></span>
 
         </div>
@@ -90,7 +109,9 @@
         <div class="opening-balloon-group balloons-right">
 
             <span class="ny-balloon balloon-sm"></span>
+
             <span class="ny-balloon balloon-lg"></span>
+
             <span class="ny-balloon balloon-glitter"></span>
 
         </div>
@@ -108,8 +129,12 @@
             aria-label="Abrir invitación"
         >
 
+
             <span class="envelope-shadow"></span>
 
+
+
+            <!-- BASE -->
 
             <span class="envelope-base">
 
@@ -121,7 +146,7 @@
 
 
 
-            <!-- TARJETA INTERNA -->
+            <!-- TARJETA INTERIOR -->
 
             <span class="envelope-letter">
 
@@ -148,10 +173,17 @@
 
 
 
+            <!-- PARTE DELANTERA -->
+
             <span class="envelope-front-left"></span>
 
             <span class="envelope-front-right"></span>
 
+            <span class="envelope-center-cover"></span>
+
+
+
+            <!-- SOLAPA -->
 
             <span class="envelope-flap"></span>
 
@@ -161,21 +193,11 @@
 
             <span class="seal">
 
-                <span class="seal-inner">
-
-                    <span class="seal-star">
-                        ✦
-                    </span>
-
-                    <strong>
-                        Toca
-                    </strong>
-
-                    <small>
-                        para abrir
-                    </small>
-
-                </span>
+                <img
+                    src="assets/images/seal-l.png"
+                    alt="Sello con la letra L"
+                    class="seal-image"
+                >
 
             </span>
 
@@ -188,6 +210,7 @@
             <span class="opening-arrow">
                 ↑
             </span>
+
 
             <p>
                 Toca para abrir la invitación
@@ -209,7 +232,8 @@
         hidden
     >
 
-        <!-- BORDES -->
+
+        <!-- BORDES PLATEADOS -->
 
         <div class="silver-edge silver-edge-left"></div>
 
@@ -228,10 +252,11 @@
 
 
         <!-- =================================================
-             HERO
+             PORTADA PRINCIPAL
         ================================================== -->
 
         <section class="section hero">
+
 
             <div class="hero-stars"></div>
 
@@ -267,7 +292,9 @@
             <div class="hero-balloon-group hero-balloon-left">
 
                 <span></span>
+
                 <span></span>
+
                 <span></span>
 
             </div>
@@ -276,7 +303,9 @@
             <div class="hero-balloon-group hero-balloon-right">
 
                 <span></span>
+
                 <span></span>
+
                 <span></span>
 
             </div>
@@ -289,7 +318,9 @@
 
 
 
-            <div class="lia-container">
+            <!-- LIA -->
+
+            <div class="lia-container reveal">
 
                 <h1 class="lia-name">
                     Lia
@@ -361,8 +392,6 @@
                 <div class="player-controls">
 
 
-                    <!-- ANTERIOR -->
-
                     <button
                         class="player-side-button"
                         type="button"
@@ -379,8 +408,6 @@
                     </button>
 
 
-
-                    <!-- PLAY / PAUSE -->
 
                     <button
                         class="main-play-button"
@@ -399,8 +426,6 @@
                     </button>
 
 
-
-                    <!-- SIGUIENTE -->
 
                     <button
                         class="player-side-button"
@@ -421,13 +446,14 @@
 
 
 
-                <!-- TIEMPO -->
+                <!-- TIEMPOS -->
 
                 <div class="player-time">
 
                     <span id="currentTime">
                         0:00
                     </span>
+
 
                     <span id="duration">
                         0:00
@@ -477,7 +503,7 @@
 
 
         <!-- =================================================
-             FRASE
+             MENSAJE
         ================================================== -->
 
         <section class="section message-section reveal">
@@ -502,7 +528,7 @@
 
 
         <!-- =================================================
-             CALENDARIO
+             FECHA
         ================================================== -->
 
         <section class="section date-section">
@@ -514,6 +540,7 @@
                     SAVE THE DATE
                 </span>
 
+
                 <h2>
                     Septiembre 2026
                 </h2>
@@ -522,17 +549,25 @@
 
 
 
+            <!-- CALENDARIO -->
+
             <div class="calendar reveal">
 
 
                 <div class="calendar-week">
 
                     <span>DOM</span>
+
                     <span>LUN</span>
+
                     <span>MAR</span>
+
                     <span>MIÉ</span>
+
                     <span>JUE</span>
+
                     <span>VIE</span>
+
                     <span>SÁB</span>
 
                 </div>
@@ -541,21 +576,35 @@
 
                 <div class="calendar-days">
 
+
                     <span></span>
+
                     <span></span>
+
 
                     <span>1</span>
+
                     <span>2</span>
+
                     <span>3</span>
+
                     <span>4</span>
+
                     <span>5</span>
 
+
                     <span>6</span>
+
                     <span>7</span>
+
                     <span>8</span>
+
                     <span>9</span>
+
                     <span>10</span>
+
                     <span>11</span>
+
 
 
                     <span class="special-day">
@@ -564,32 +613,48 @@
                             12
                         </b>
 
-                        <i>
-                            ♡
-                        </i>
+                       
 
                     </span>
 
 
+
                     <span>13</span>
+
                     <span>14</span>
+
                     <span>15</span>
+
                     <span>16</span>
+
                     <span>17</span>
+
                     <span>18</span>
+
                     <span>19</span>
 
+
                     <span>20</span>
+
                     <span>21</span>
+
                     <span>22</span>
+
                     <span>23</span>
+
                     <span>24</span>
+
                     <span>25</span>
+
                     <span>26</span>
 
+
                     <span>27</span>
+
                     <span>28</span>
+
                     <span>29</span>
+
                     <span>30</span>
 
                 </div>
@@ -598,7 +663,9 @@
 
 
 
-            <!-- CONTADOR -->
+            <!-- =================================================
+                 CONTADOR
+            ================================================== -->
 
             <div class="countdown-container reveal">
 
@@ -687,9 +754,11 @@
 
             <div class="event-info">
 
+
                 <p class="event-place">
                     Roof Top Edificio Cámara de Industria
                 </p>
+
 
                 <p>
                     Nivel 16
@@ -729,9 +798,8 @@
                 rel="noopener noreferrer"
             >
 
-                <span class="location-pin">
-                    •
-                </span>
+                <span class="location-pin"></span>
+
 
                 <span>
                     Toca para ver la ubicación
@@ -825,7 +893,8 @@
 
 
             <p>
-                Confirma tu asistencia directamente por WhatsApp.
+                Confirma tu asistencia directamente
+                por WhatsApp.
             </p>
 
 
@@ -880,21 +949,34 @@
 
         <footer class="section final-section reveal">
 
+
             <div class="footer-stars"></div>
+
 
             <div class="final-skyline"></div>
 
 
-            <p>
-                NYC is waiting for you!
-            </p>
+
+            <div class="final-message">
+
+    <div class="final-nyc">
+        NYC
+    </div>
+
+    <div class="final-script final-phrase">
+        is waiting for you!
+    </div>
+
+</div>
 
 
-            <span>
+
+            <span class="final-date">
                 12 · 09 · 2026
             </span>
 
         </footer>
+
 
     </main>
 
@@ -906,7 +988,7 @@
     ></div>
 
 
-    <script src="js/script.js?v=7"></script>
+    <script src="js/script.js?v=10"></script>
 
 </body>
 
